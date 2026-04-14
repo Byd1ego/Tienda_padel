@@ -25,20 +25,25 @@ session_start();
 
     <nav>
         <ul class="menu">
-            <li>Inicio</li>
-            <li>Acerca de</li>
-            <li>Productos</li>
+            <li><a href="index.php">Inicio</a></li>
+            <li><a href="Acercade.php">Acerca de</a></li>
+            <li><a href="Productos.php">Productos</a></li>
             <?php
             if(isset($_SESSION['rol'])){
             echo '<li>Ofertas</li>';
             }
             ?>
-            <li>Contacto</li>
+            <li><a href="Contacto.php">Contacto</a></li>
             <?php
             if(isset($_SESSION['rol'])){
             echo '<li><a href="logout.php">Logout</a></li>';
             }else{
             echo '<li><a href="login.php">Login</a></li>';
+            }
+             if(isset($_SESSION['rol'])){
+                if($_SESSION['rol'] == 'admin'){
+                     echo '<li><a href="admin/productos.php">Administrar productos</a></li>';
+                }
             }
             ?>
             

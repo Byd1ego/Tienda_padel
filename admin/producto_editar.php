@@ -47,8 +47,7 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol'] !== 'admin') {
                 SET nombre = :nombre,
                     nombre_corto = :nombre_corto,
                     descripcion = :descripcion,
-                    PVP = :pvp,
-                    familia = :familia
+                    pvp = :pvp
                 WHERE cod = :cod";
 
         $stmt = $conexion->prepare($sql);
@@ -58,7 +57,6 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol'] !== 'admin') {
         $stmt->bindValue(':nombre_corto', $_POST['nombre_corto']);
         $stmt->bindValue(':descripcion', $_POST['descripcion']);
         $stmt->bindValue(':pvp', $_POST['pvp'], PDO::PARAM_STR);
-        $stmt->bindValue(':familia', $_POST['familia']);
 
         try {
             $stmt->execute();
@@ -94,14 +92,7 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol'] !== 'admin') {
 
         <div class="form-grupo">
             <label>Precio (€)</label>
-            <input type="number" step="0.01" name="pvp" value="<?php echo htmlspecialchars($producto['PVP']); ?>" required>
-        </div>
-
-        <div class="form-grupo">
-            <label>Familia</label>
-            <?php
-                echo generarSelect($conexion, 'producto', 'familia', 'familia', $producto['familia'], false);
-            ?>
+            <input type="number" step="0.01" name="pvp" value="<?php echo htmlspecialchars($producto['pvp']); ?>" required>
         </div>
 
         <div class="form-botones">

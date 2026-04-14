@@ -23,17 +23,10 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol'] !== 'admin') {
         <?php
             require_once '../includes/conexion.php';
             require_once '../includes/funciones.php';            
-                        
-            $familiaSeleccionada = $_GET['familia'] ?? 'TODAS';
         ?>
 
             <!-- Barra superior -->
             <div class="barra-superior">
-                <form method="get">
-                      Filtrar por familia:
-                      <?php echo generarSelect($conexion,'producto', 'familia', 'familia', $familiaSeleccionada, true); ?>
-                            <button type="submit">Filtrar</button>
-                </form>
                 <div class="botones-derecha">
                      <a href="../index.php" class="btn-admin">Tienda</a>
                      <a href="producto_nuevo.php" class="btn btn-nuevo">➕ Nuevo producto</a>
@@ -42,18 +35,9 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol'] !== 'admin') {
             </div>
 
         <?php
-            $sql = "SELECT cod, nombre_corto, descripcion, PVP, familia FROM producto";
-
-            if ($familiaSeleccionada !== 'TODAS') {
-                $sql .= " WHERE familia = :familia";
-            }
+            $sql = "SELECT cod, nombre_corto, descripcion, pvp FROM producto";
 
             $stmt = $conexion->prepare($sql);
-
-            if ($familiaSeleccionada !== 'TODAS') {
-                $stmt->bindValue(':familia', $familiaSeleccionada, PDO::PARAM_STR);
-            }
-
             $stmt->execute();
             $productos = $stmt->fetchAll();
 
@@ -64,7 +48,6 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol'] !== 'admin') {
                         <th>Nombre</th>
                         <th>Descripción</th>
                         <th>PVP</th>
-                        <th>Familia</th>
                         <th>Acciones</th>
                      </tr>";
 
@@ -73,8 +56,7 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol'] !== 'admin') {
                     echo " <td>" . $p['cod'] . "</td>";
                     echo " <td>" . $p['nombre_corto'] . "</td>";
                     echo " <td>" . $p['descripcion'] . "</td>";
-                    echo " <td class='precio'>" . number_format($p['PVP'], 2) . " €</td>";
-                    echo " <td class='familia'>" . $p['familia'] . "</td>";
+                    echo " <td class='precio'>" . number_format($p['pvp'], 2) . " €</td>";
                     echo " <td class='acciones'>
                                <a class='btn btn-editar' href='producto_editar.php?cod=" . $p['cod'] . "'>Editar</a><br>
                                <a class='btn btn-borrar' href='producto_borrar.php?cod=" . $p['cod'] . "'>Borrar</a>
