@@ -77,6 +77,11 @@
         #icono {
             cursor: pointer;
         }
+        .menu > li > button{
+            background-color: green;
+            padding: 10px;
+            color: white;
+        }
 
         .card {
             background-color: white;
