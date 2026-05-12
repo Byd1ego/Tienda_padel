@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <div class="borrar-contenedor">
-    <h1>🗑️ Borrar producto</h1>
+    <h1>Borrar producto</h1>
     <div class="borrar-mensaje">
         ¿Estás seguro de que deseas borrar el producto <strong><?php echo htmlspecialchars($producto['nombre_corto']); ?></strong> (código: <?php echo htmlspecialchars($producto['cod']); ?>)?
     </div>

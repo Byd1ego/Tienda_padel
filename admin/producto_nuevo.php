@@ -5,7 +5,7 @@ require_once '../includes/funciones.php';
 ?>
 
 <div class="admin-contenedor">
-    <h1 class="admin-titulo">➕ Nuevo producto</h1>
+    <h1 class="admin-titulo">Nuevo producto</h1>
 
     <?php
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {

@@ -64,3 +64,15 @@ CREATE TABLE foro (
     comentario TEXT NOT NULL,
     fecha DATETIME DEFAULT CURRENT_TIMESTAMP
 );
+
+-- =========================
+-- TABLA: carrito
+-- =========================
+CREATE TABLE carrito (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario VARCHAR(100) NOT NULL,
+    producto VARCHAR(12) NOT NULL,
+    unidades INT DEFAULT 1,
+    fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (producto) REFERENCES producto(cod)
+);

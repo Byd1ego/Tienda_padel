@@ -43,3 +43,15 @@ INSERT INTO stock (producto, tienda, unidades) VALUES
 ('P018', 1, 5),
 ('P019', 1, 14),
 ('P020', 1, 10);
+
+-- =========================
+-- TABLA: carrito (ejecutar después de crear la tabla)
+-- =========================
+CREATE TABLE IF NOT EXISTS carrito (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario VARCHAR(100) NOT NULL,
+    producto VARCHAR(12) NOT NULL,
+    unidades INT DEFAULT 1,
+    fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (producto) REFERENCES producto(cod)
+);

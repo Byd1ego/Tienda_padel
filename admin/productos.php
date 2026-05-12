@@ -5,7 +5,7 @@ require_once '../includes/funciones.php';
 ?>
 
 <div class="admin-contenedor">
-    <h1 class="admin-titulo">🛒 Administración de productos</h1>
+    <h1 class="admin-titulo">Administración de productos</h1>
 
     <?php
     $sql = "SELECT cod, nombre_corto, descripcion, marca, nivel, forma, peso, pvp, exclusiva, imagen FROM producto";

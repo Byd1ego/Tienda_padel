@@ -5,7 +5,7 @@ require_once '../includes/funciones.php';
 ?>
 
 <div class="admin-contenedor">
-    <h1 class="admin-titulo">✏️ Editar producto</h1>
+    <h1 class="admin-titulo">Editar producto</h1>
 
     <?php
     if (!isset($_GET['cod'])) {
