@@ -3,17 +3,30 @@ include_once 'includes/header.php';
 ?>
 
 <main>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A, beatae. Porro culpa minima recusandae beatae
-        ipsam pariatur voluptatem repellat dicta esse tenetur qui at mollitia nostrum provident, minus tempora
-        molestias!
-        Et quibusdam, eius autem minima corrupti cupiditate sint laboriosam, possimus alias voluptates nulla
-        asperiores vero, quaerat temporibus! Quo aspernatur repudiandae necessitatibus, temporibus repellat
-        nesciunt sequi voluptatibus maxime modi, tempora esse!
-        Laudantium vitae cupiditate porro rerum, sunt nostrum exercitationem. Delectus, recusandae nisi quas
-        odio optio provident porro distinctio quaerat deleniti. Quas quidem dignissimos ex expedita, cum
-        veritatis dolorum quisquam impedit quis?</p>
-
-    <h2>Algunos de nuestros productos</h2>
+    <div class="banner-grid">
+    <div class="banner-imagen">
+        <img src="static/img/Almejorprecio.png" alt="Empieza a jugar al mejor precio">
+    </div>
+    <div class="banner-texto">
+        <span class="banner-tag">Tienda de pádel</span>
+        <h1 class="banner-titulo">Palas más vendidas</h1>
+        <p class="banner-desc">Descubre nuestra selección de palas para todos los niveles. Calidad profesional al mejor precio.</p>
+        <div class="banner-stats">
+            <div class="banner-stat">
+                <strong>+20</strong>
+                <span>Modelos</span>
+            </div>
+            <div class="banner-stat">
+                <strong>3</strong>
+                <span>Niveles</span>
+            </div>
+            <div class="banner-stat">
+                <strong>6</strong>
+                <span>Marcas</span>
+            </div>
+        </div>
+    </div>
+</div>
 
     <?php
     require_once 'includes/conexion.php';

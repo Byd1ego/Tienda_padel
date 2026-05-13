@@ -11,12 +11,13 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol'] !== 'admin') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="../static/css/estilos.css">
     <title>Admin - Tienda Pádel</title>
 </head>
 <body>
 
-<header>
+<header class="header-admin">
     <input type="checkbox" id="hamburguesa-admin">
     <a href="../index.php">
         <img src="../static/img/logo.png" alt="Logo" width="180">

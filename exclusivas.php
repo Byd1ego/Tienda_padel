@@ -8,7 +8,30 @@ if (!isset($_SESSION['usuario'])) {
 ?>
 
 <main>
-    <h2>Exclusivas</h2>
+    <div class="banner-grid">
+    <div class="banner-imagen">
+        <img src="static/img/exclusivas.png" alt="Empieza a jugar al mejor precio">
+    </div>
+    <div class="banner-texto">
+        <span class="banner-tag">Tienda de pádel</span>
+        <h1 class="banner-titulo">Palas Exclusivas</h1>
+        <p class="banner-desc">Descubre las palas mas exclusivas de estas temporada y cual se adapta mejor a tu juego.</p>
+        <div class="banner-stats">
+            <div class="banner-stat">
+                <strong>+20</strong>
+                <span>Modelos</span>
+            </div>
+            <div class="banner-stat">
+                <strong>3</strong>
+                <span>Niveles</span>
+            </div>
+            <div class="banner-stat">
+                <strong>6</strong>
+                <span>Marcas</span>
+            </div>
+        </div>
+    </div>
+</div>
 
     <?php
     require_once 'includes/conexion.php';

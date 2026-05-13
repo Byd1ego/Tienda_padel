@@ -13,7 +13,6 @@ session_start();
 </head>
 
 <body>
-    <div>
         <header>
             <input type="checkbox" id="hamburguesa">
             <img src="static/img/logo.png" alt="" width="180">

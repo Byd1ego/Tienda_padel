@@ -1,48 +1,54 @@
 * {
     padding: 0;
     margin: 0;
-}
-body{
-    background-color: lightgray;
+    box-sizing: border-box;
 }
 
-header {
+body {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-    background-color: black;
-    color: white;
-    position: relative;
-}
-
-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: black;
-    color: white;
-    padding: 10px;
-}
-
-footer>p:nth-child(2) {
-    align-self: flex-end;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 main {
+    flex: 1;
     padding: 20px;
 }
 
 main>h2 {
-    margin-top: 30px;
-    margin-bottom: 30px;
     text-align: center;
+    padding: 10px;
 }
 
-.contenedorgrid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
+/* ── HEADER ── */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: white;
+    color: black;
+    position: relative;
+    border-bottom: 1px solid black;
+}
+
+/* ── FOOTER ── */
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    color: black;
+    padding: 10px;
+    border-top: 1px solid black;
+}
+
+footer>p {
+    color: black;
+}
+
+footer>p:nth-child(2) {
+    align-self: flex-end;
 }
 
 /* ── MENÚ ── */
@@ -51,22 +57,29 @@ main>h2 {
     position: absolute;
     top: 8em;
     left: 0;
-    background-color: black;
+    background-color: white;
     width: 100%;
     display: none;
     flex-direction: column;
     text-align: center;
     z-index: 1000;
+    border-top: 1px solid #eee;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .menu li {
     padding: 15px;
-    border-top: 1px solid #333;
+    border-top: 1px solid #eee;
 }
 
 .menu>li>a {
-    color: white;
+    color: black;
     text-decoration: none;
+    font-size: 1rem;
+}
+
+.menu>li>a:hover {
+    color: #555;
 }
 
 #hamburguesa {
@@ -76,6 +89,7 @@ main>h2 {
 #icono {
     cursor: pointer;
     font-size: 29px;
+    color: black;
 }
 
 #hamburguesa:checked~.menu {
@@ -92,24 +106,34 @@ main>h2 {
     position: absolute;
     top: 8em;
     left: 0;
-    background-color: black;
+    background-color: white;
     width: 100%;
     display: none;
     flex-direction: column;
     text-align: center;
     z-index: 1000;
+    border-top: 1px solid #eee;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .menu-admin li {
     padding: 15px;
-    border-top: 1px solid #333;
+    border-top: 1px solid #eee;
 }
 
 .menu-admin li a {
-    color: white;
+    color: black;
     text-decoration: none;
+    font-size: 1rem;
 }
 
+.menu-admin li a:hover {
+    color: #555;
+}
+
+.menu-admin-cerrar {
+    font-weight: bold;
+}
 
 #hamburguesa-admin {
     display: none;
@@ -118,11 +142,85 @@ main>h2 {
 #icono-admin {
     cursor: pointer;
     font-size: 29px;
-    color: white;
+    color: black;
 }
 
 #hamburguesa-admin:checked~nav .menu-admin {
     display: flex;
+}
+
+/* ── Banner ── */
+.banner-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    margin-bottom: 40px;
+    background-color: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.banner-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.banner-texto {
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+}
+
+.banner-tag {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #888;
+}
+
+.banner-titulo {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #111;
+    line-height: 1.2;
+}
+
+.banner-desc {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.7;
+}
+
+.banner-stats {
+    display: flex;
+    gap: 24px;
+    margin-top: 8px;
+}
+
+.banner-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.banner-stat strong {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #111;
+}
+
+.hero-stat span {
+    font-size: 0.8rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 /* ── CARDS ── */
@@ -154,7 +252,45 @@ main>h2 {
     text-align: center;
 }
 
+/* ── CONTENEDOR GRID ── */
+.contenedorgrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+/* ── SECCIÓN PRODUCTOS ── */
+.seccion-productos {
+    padding: 40px 20px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.seccion-titulo {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #111;
+    letter-spacing: 0.5px;
+}
+
+.seccion-subtitulo {
+    text-align: center;
+    color: #666;
+    font-size: 1rem;
+    margin-bottom: 30px;
+}
+
 /* ── CONTACTO ── */
+.imagen-contactanos img {
+    width: 50%;
+    height: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
+
 .contacto-contenedor {
     max-width: 1100px;
     margin: 30px auto;
@@ -458,7 +594,7 @@ main>h2 {
 /* ── BIENVENIDA ── */
 #bienvenida {
     display: none;
-    background-color: #111;
+    background-color: blue;
     color: white;
     padding: 15px 40px 15px 20px;
     border-radius: 8px;
@@ -506,9 +642,10 @@ main>h2 {
     margin-bottom: 16px;
     text-align: center;
 }
+
 /* ── CARRITO ── */
 .boton-carrito {
-    background-color: black;
+    background-color: blue;
     color: white;
     border: none;
     padding: 8px 16px;
@@ -605,13 +742,23 @@ main>h2 {
     padding: 10px 24px;
     border-radius: 8px;
     font-size: 1rem;
-    cursor: not-allowed;
-    opacity: 0.7;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.boton-pagar:hover {
+    background-color: #2ecc71;
 }
 
 /* ════════════════════════
    RESPONSIVE
 ════════════════════════ */
+
+@media (max-width: 767px) {
+    header {
+        padding: 10px 16px;
+    }
+}
 
 @media (max-width: 1024px) {
     .tabla-admin {
@@ -644,6 +791,8 @@ main>h2 {
         width: auto;
         gap: 20px;
         background: none;
+        box-shadow: none;
+        border: none;
     }
 
     .menu li {
@@ -659,6 +808,8 @@ main>h2 {
         width: auto;
         gap: 20px;
         background: none;
+        box-shadow: none;
+        border: none;
     }
 
     .menu-admin li {
@@ -681,6 +832,22 @@ main>h2 {
 
     .contacto-mapa {
         height: 350px;
+    }
+
+    .seccion-titulo {
+        font-size: 2.2rem;
+    }
+
+    .banner-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .banner-titulo {
+        font-size: 2.6rem;
+    }
+
+    .banner-texto {
+        padding: 40px 36px;
     }
 }
 

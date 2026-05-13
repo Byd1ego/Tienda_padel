@@ -47,7 +47,7 @@ $comentarios = $stmt->fetchAll();
                     <textarea name="comentario" id="comentario" rows="4" placeholder="Escribe tu comentario..." required></textarea>
                 </div>
                 <div class="form-botones">
-                    <button type="submit" class="boton-nuevo">💬 Publicar</button>
+                    <button type="submit" class="boton-nuevo">Publicar</button>
                 </div>
             </form>
         </div>
