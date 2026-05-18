@@ -68,8 +68,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="password" name="clave" id="clave" required>
         </div>
         <div class="form-botones">
-            <a href="index.php" class="boton-cerrar">Cancelar</a>
-            <button type="submit" class="boton-nuevo">Entrar</button>
+            <a href="index.php" class="boton-cerrar">Volver</a>
+            <button type="submit" class="boton-nuevo">Iniciar Sesion</button>
         </div>
     </form>
 </div>

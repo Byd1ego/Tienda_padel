@@ -5,7 +5,6 @@ require_once '../includes/conexion.php';
 require_once '../includes/funciones.php';
 
 // Recoge el filtro de nivel si viene por URL y es un valor válido
-// Si no viene o no es válido, queda vacío y se muestran todos los productos
 $nivel = isset($_GET['nivel']) && in_array($_GET['nivel'], ['principiante', 'intermedio', 'avanzado']) ? $_GET['nivel'] : '';
 
 // Si hay filtro añade WHERE, si no trae todos los productos
@@ -31,7 +30,48 @@ $productos = $stmt->fetchAll();
     </form>
 
     <?php if (count($productos) > 0): ?>
-        <!-- El wrapper permite scroll horizontal sin afectar header ni footer -->
+
+        <!-- VISTA MÓVIL: cada producto se muestra como una tarjeta -->
+        <div class="productos-cards">
+            <?php foreach ($productos as $p): ?>
+                <?php
+                // Consulta el stock de cada producto en la tienda 1
+                $s = $conexion->prepare("SELECT unidades FROM stock WHERE producto = :cod AND tienda = 1");
+                $s->bindValue(':cod', $p['cod']);
+                $s->execute();
+                $stock    = $s->fetch();
+
+                // Si no hay registro de stock se muestra 0
+                $unidades = $stock ? $stock['unidades'] : 0;
+                ?>
+                <div class="producto-card-admin">
+                    <!-- Imagen del producto -->
+                    <div class="producto-card-img">
+                        <?php echo $p['imagen'] ? "<img src='../static/img/" . htmlspecialchars($p['imagen']) . "'>" : 'Sin imagen'; ?>
+                    </div>
+                    <!-- Datos del producto -->
+                    <div class="producto-card-body">
+                        <p><strong><?php echo $p['nombre_corto']; ?></strong></p>
+                        <p><span class="card-label">Código:</span> <?php echo $p['cod']; ?></p>
+                        <p><span class="card-label">Marca:</span> <?php echo $p['marca']; ?></p>
+                        <p><span class="card-label">Nivel:</span> <?php echo $p['nivel']; ?></p>
+                        <p><span class="card-label">Forma:</span> <?php echo $p['forma']; ?></p>
+                        <p><span class="card-label">Peso:</span> <?php echo $p['peso']; ?> g</p>
+                        <p><span class="card-label">PVP:</span> <strong class="precio-admin"><?php echo number_format($p['pvp'], 2); ?> €</strong></p>
+                        <p><span class="card-label">Exclusiva:</span> <?php echo $p['exclusiva'] ? 'Sí' : 'No'; ?></p>
+                        <p><span class="card-label">Stock:</span> <?php echo $unidades; ?> ud</p>
+                        <p><span class="card-label">Descripción:</span> <?php echo $p['descripcion']; ?></p>
+                        <!-- Botones de editar y borrar -->
+                        <div class="acciones-admin" style="margin-top:10px;">
+                            <a class='boton-editar' href='producto_editar.php?cod=<?php echo $p['cod']; ?>'>Editar</a>
+                            <a class='boton-borrar' href='producto_borrar.php?cod=<?php echo $p['cod']; ?>'>Borrar</a>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+
+        <!-- VISTA ESCRITORIO: tabla completa con todas las columnas -->
         <div class="tabla-wrapper">
             <table class='tabla-admin'>
                 <tr>
@@ -46,12 +86,10 @@ $productos = $stmt->fetchAll();
                     $s->bindValue(':cod', $p['cod']);
                     $s->execute();
                     $stock    = $s->fetch();
-
-                    // Si no hay registro de stock se muestra 0
                     $unidades = $stock ? $stock['unidades'] : 0;
                     ?>
                     <tr>
-                        <!-- Muestra la imagen del producto o un texto si no tiene -->
+                        <!-- Muestra la imagen o texto si no tiene -->
                         <td><?php echo $p['imagen'] ? "<img src='../static/img/" . htmlspecialchars($p['imagen']) . "' style='max-width:60px; border-radius:6px;'>" : 'Sin imagen'; ?></td>
                         <td><?php echo $p['cod']; ?></td>
                         <td><?php echo $p['nombre_corto']; ?></td>
@@ -60,11 +98,11 @@ $productos = $stmt->fetchAll();
                         <td><?php echo $p['nivel']; ?></td>
                         <td><?php echo $p['forma']; ?></td>
                         <td><?php echo $p['peso']; ?> g</td>
-                        <!-- Formatea el precio con 2 decimales -->
+                        <!-- Precio formateado con 2 decimales -->
                         <td class='precio-admin'><?php echo number_format($p['pvp'], 2); ?> €</td>
                         <td><?php echo $p['exclusiva'] ? 'Sí' : 'No'; ?></td>
                         <td><?php echo $unidades; ?> ud</td>
-                        <!-- Botones para editar o borrar el producto -->
+                        <!-- Botones de editar y borrar -->
                         <td class='acciones-admin'>
                             <a class='boton-editar' href='producto_editar.php?cod=<?php echo $p['cod']; ?>'>Editar</a>
                             <a class='boton-borrar' href='producto_borrar.php?cod=<?php echo $p['cod']; ?>'>Borrar</a>
@@ -73,6 +111,7 @@ $productos = $stmt->fetchAll();
                 <?php endforeach; ?>
             </table>
         </div>
+
     <?php else: ?>
         <p>No hay productos para mostrar.</p>
     <?php endif; ?>

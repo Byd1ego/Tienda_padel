@@ -33,7 +33,9 @@ header {
     padding: 10px 20px;
     background-color: #0A1628;
     color: white;
-    position: relative;
+    position: sticky;
+    top: 0;
+    z-index: 999;
     border-bottom: 3px solid #C8E000;
 }
 
@@ -57,11 +59,10 @@ footer>p:nth-child(2) {
 }
 
 /* ── MENÚ MÓVIL ── */
-/* El menú está oculto por defecto y se muestra en columna al abrir */
 .menu {
     list-style: none;
     position: absolute;
-    top: 8em;
+    top: 100%;
     left: 0;
     background-color: #0A1628;
     width: 100%;
@@ -88,30 +89,26 @@ footer>p:nth-child(2) {
     color: #C8E000;
 }
 
-/* El checkbox del menú hamburguesa está oculto visualmente */
 #hamburguesa {
     display: none;
 }
 
-/* Icono de las tres líneas del menú hamburguesa */
 #icono {
     cursor: pointer;
     font-size: 29px;
     color: white;
 }
 
-/* Cuando el checkbox está marcado, muestra el menú */
 #hamburguesa:checked~.menu,
 #hamburguesa:checked~nav .menu {
     display: flex;
 }
 
 /* ── MENÚ ADMIN ── */
-/* Mismo comportamiento que el menú normal pero para el panel de administración */
 .menu-admin {
     list-style: none;
     position: absolute;
-    top: 8em;
+    top: 100%;
     left: 0;
     background-color: #0A1628;
     width: 100%;
@@ -152,8 +149,7 @@ footer>p:nth-child(2) {
     display: flex;
 }
 
-/* ── BANNER COMPLETO (index, exclusivas, contacto) ── */
-/* En móvil imagen arriba y texto abajo, en tablet lado a lado */
+/* ── BANNER ── */
 .banner-completo {
     display: grid;
     grid-template-columns: 1fr;
@@ -165,7 +161,7 @@ footer>p:nth-child(2) {
     border-top: 4px solid #C8E000;
 }
 
-/* ── SLIDESHOW (index) ── */
+/* ── SLIDESHOW ── */
 #slideshow {
     width: 100%;
     height: 200px;
@@ -173,7 +169,6 @@ footer>p:nth-child(2) {
     overflow: hidden;
 }
 
-/* Las imágenes del slideshow se superponen y se muestran de una en una */
 #slideshow img {
     position: absolute;
     width: 100%;
@@ -184,7 +179,7 @@ footer>p:nth-child(2) {
     left: 0;
 }
 
-/* ── BANNER IMAGEN ESTÁTICA (exclusivas, contacto) ── */
+/* ── BANNER IMAGEN ESTÁTICA ── */
 .banner-imagen-estatica {
     width: 100%;
     height: 300px;
@@ -227,7 +222,6 @@ footer>p:nth-child(2) {
     line-height: 1.7;
 }
 
-/* Estadísticas del banner (modelos, niveles, marcas) */
 .banner-stats {
     display: flex;
     gap: 24px;
@@ -255,7 +249,6 @@ footer>p:nth-child(2) {
 }
 
 /* ── GRID DE PRODUCTOS ── */
-/* En móvil una columna, en tablet dos, en escritorio tres (ver responsive) */
 .contenedorgrid {
     display: grid;
     grid-template-columns: 1fr;
@@ -268,7 +261,6 @@ footer>p:nth-child(2) {
     border-radius: 16px;
     padding: 15px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    /* Animación suave al pasar el ratón */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     margin: auto;
     max-width: 320px;
@@ -280,7 +272,6 @@ footer>p:nth-child(2) {
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
 }
 
-/* Quita el subrayado del enlace de la card */
 .card a {
     text-decoration: none;
 }
@@ -343,7 +334,6 @@ footer>p:nth-child(2) {
     margin-bottom: 24px;
 }
 
-/* Grid de especificaciones del producto (marca, nivel, forma, peso) */
 .producto-specs {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -391,7 +381,6 @@ footer>p:nth-child(2) {
     flex-wrap: wrap;
 }
 
-/* Botón de página normal */
 .pag-boton {
     background-color: white;
     color: #111111;
@@ -409,7 +398,6 @@ footer>p:nth-child(2) {
     border-color: #C8E000;
 }
 
-/* Botón de la página actualmente seleccionada */
 .pag-activo {
     background-color: #1A73E8;
     color: white;
@@ -434,11 +422,10 @@ footer>p:nth-child(2) {
     padding: 0 16px;
 }
 
-/* En móvil el formulario y la info se apilan, en tablet van en fila */
 .contacto-bloque {
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    gap: 30px;
     margin-bottom: 30px;
 }
 
@@ -476,7 +463,6 @@ footer>p:nth-child(2) {
     width: 100%;
 }
 
-/* Mensaje verde de éxito al enviar el formulario */
 .contacto-ok {
     background: #d4edda;
     color: #155724;
@@ -523,7 +509,6 @@ footer>p:nth-child(2) {
     box-sizing: border-box;
 }
 
-/* Borde azul al hacer foco en un campo */
 .form-grupo input:focus,
 .form-grupo textarea:focus {
     outline: none;
@@ -540,7 +525,6 @@ footer>p:nth-child(2) {
 }
 
 /* ── BOTONES ── */
-/* Botón principal azul */
 .boton-nuevo {
     background-color: #1A73E8;
     color: white;
@@ -557,7 +541,6 @@ footer>p:nth-child(2) {
     background-color: #0A1628;
 }
 
-/* Botón gris oscuro para volver */
 .boton-tienda {
     background-color: #444444;
     color: white;
@@ -574,7 +557,6 @@ footer>p:nth-child(2) {
     background-color: #666666;
 }
 
-/* Botón rojo para cancelar */
 .boton-cerrar {
     background-color: #C0392B;
     color: white;
@@ -591,7 +573,6 @@ footer>p:nth-child(2) {
     background-color: #e74c3c;
 }
 
-/* Botón azul para editar un producto */
 .boton-editar {
     background-color: #1A73E8;
     color: white;
@@ -606,7 +587,6 @@ footer>p:nth-child(2) {
     background-color: #0A1628;
 }
 
-/* Botón rojo para borrar un producto */
 .boton-borrar {
     background-color: #C0392B;
     color: white;
@@ -621,7 +601,6 @@ footer>p:nth-child(2) {
     background-color: #e74c3c;
 }
 
-/* Botón azul del carrito */
 .boton-carrito {
     background-color: #1A73E8;
     color: white;
@@ -639,7 +618,6 @@ footer>p:nth-child(2) {
     background-color: #0A1628;
 }
 
-/* Botón verde de pagar */
 .boton-pagar {
     background-color: #27AE60;
     color: white;
@@ -680,11 +658,47 @@ footer>p:nth-child(2) {
     flex-wrap: wrap;
 }
 
-/* ── TABLA ADMIN ── */
-/* El wrapper permite scroll horizontal sin afectar header ni footer */
+/* ── TARJETAS ADMIN (móvil) ── */
+.productos-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.producto-card-admin {
+    background-color: white;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    gap: 16px;
+    border-left: 4px solid #1A73E8;
+}
+
+.producto-card-img img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.producto-card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.9rem;
+}
+
+.card-label {
+    font-weight: bold;
+    color: #555555;
+}
+
+/* ── TABLA ADMIN (escritorio) ── */
 .tabla-wrapper {
-    overflow-x: auto;
-    width: 100%;
+    display: none;
 }
 
 .tabla-admin {
@@ -717,7 +731,6 @@ footer>p:nth-child(2) {
     border-bottom: none;
 }
 
-/* Fila con fondo azul claro al pasar el ratón */
 .tabla-admin tr:hover td {
     background-color: #f0f7ff;
 }
@@ -745,7 +758,6 @@ footer>p:nth-child(2) {
     border-top: 4px solid #C0392B;
 }
 
-/* Mensaje de aviso en rojo para confirmar el borrado */
 .borrar-mensaje {
     background-color: #f8d7da;
     color: #721c24;
@@ -777,7 +789,6 @@ footer>p:nth-child(2) {
     border-top: 4px solid #1A73E8;
 }
 
-/* Cada comentario tiene una línea azul a la izquierda */
 .comentario {
     background-color: white;
     border-radius: 12px;
@@ -792,8 +803,7 @@ footer>p:nth-child(2) {
     margin-left: 6px;
 }
 
-/* ── MENSAJE DE BIENVENIDA (FORO) ── */
-/* Oculto por defecto, se muestra con jQuery slideDown al cargar la página */
+/* ── BIENVENIDA FORO ── */
 #bienvenida {
     display: none;
     background-color: #0A1628;
@@ -805,7 +815,6 @@ footer>p:nth-child(2) {
     border-left: 4px solid #C8E000;
 }
 
-/* Botón X para cerrar el mensaje de bienvenida */
 #cerrar-bienvenida {
     position: absolute;
     top: 10px;
@@ -822,7 +831,6 @@ footer>p:nth-child(2) {
     border-radius: 16px;
     padding: 40px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    border-top: 4px solid #1A73E8;
 }
 
 .login-titulo {
@@ -832,7 +840,6 @@ footer>p:nth-child(2) {
     color: #111111;
 }
 
-/* Mensaje amarillo de aviso (cuando se redirige al login) */
 .alerta {
     background-color: #fff3cd;
     color: #856404;
@@ -842,7 +849,6 @@ footer>p:nth-child(2) {
     text-align: center;
 }
 
-/* Mensaje rojo de error (usuario o contraseña incorrectos) */
 .error {
     background-color: #f8d7da;
     color: #721c24;
@@ -920,7 +926,6 @@ footer>p:nth-child(2) {
     margin-top: 4px;
 }
 
-/* Barra inferior del carrito con el total y el botón de pagar */
 .carrito-total {
     background-color: #0A1628;
     border-radius: 12px;
@@ -938,47 +943,38 @@ footer>p:nth-child(2) {
    RESPONSIVE — MOBILE FIRST
 ════════════════════════ */
 
-/* Ajuste de padding del header en móvil pequeño */
 @media (max-width: 767px) {
     header {
         padding: 10px 16px;
     }
 }
 
-/* En tablet el admin-barra cambia de alineación */
 @media (max-width: 1024px) {
     .admin-barra {
         justify-content: flex-start;
     }
 }
 
-/* A partir de 480px el slideshow crece un poco */
 @media (min-width: 480px) {
     #slideshow {
         height: 280px;
     }
 }
 
-/* A partir de 768px (tablet) el diseño cambia a horizontal */
 @media (min-width: 768px) {
-
-    /* El grid de productos pasa a 2 columnas */
     .contenedorgrid {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    /* El banner pasa a dos columnas (imagen + texto lado a lado) */
     .banner-completo {
         grid-template-columns: 1fr 1fr;
     }
 
-    /* Se oculta el icono hamburguesa porque el menú ya cabe en pantalla */
     #icono,
     #icono-admin {
         display: none;
     }
 
-    /* El menú pasa de columna vertical a fila horizontal */
     .menu,
     .menu-admin {
         position: static;
@@ -997,7 +993,6 @@ footer>p:nth-child(2) {
         padding: 0;
     }
 
-    /* El bloque de contacto pasa a fila (formulario + info lado a lado) */
     .contacto-bloque {
         flex-direction: row;
     }
@@ -1010,7 +1005,6 @@ footer>p:nth-child(2) {
         height: 350px;
     }
 
-    /* El slideshow crece en tablet */
     #slideshow {
         height: 380px;
     }
@@ -1023,7 +1017,6 @@ footer>p:nth-child(2) {
         padding: 40px 36px;
     }
 
-    /* El detalle del producto pasa a fila (imagen + info lado a lado) */
     .producto-detalle {
         flex-direction: row;
     }
@@ -1037,13 +1030,22 @@ footer>p:nth-child(2) {
     }
 }
 
-/* A partir de 1200px (escritorio) el grid de productos pasa a 3 columnas */
+@media (min-width: 1024px) {
+    .productos-cards {
+        display: none;
+    }
+
+    .tabla-wrapper {
+        display: block;
+        overflow-x: auto;
+    }
+}
+
 @media (min-width: 1200px) {
     .contenedorgrid {
         grid-template-columns: repeat(3, 1fr);
     }
 
-    /* El slideshow alcanza su tamaño máximo */
     #slideshow {
         height: 420px;
     }
