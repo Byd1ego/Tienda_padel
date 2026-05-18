@@ -1,17 +1,21 @@
 <?php
-
-    if ($_SERVER['HTTP_HOST'] === 'localhost') {
-    // Configuración local
+if ($_SERVER['HTTP_HOST'] === 'localhost') {
+    // Local
     $host = 'localhost';
     $usuario = 'root';
     $password = '';
     $bd = 'tienda_padel';
 } else {
-    // Configuración InfinityFree
-    $host = 'sql208.infinityfree.com'; // el host que te dio InfinityFree
+    // InfinityFree
+    $host = 'sql107.infinityfree.com';
     $usuario = 'if0_41953172';
-    $password = 'tu_password_bd';
-    $bd = 'tu_nombre_bd';
+    $password = 'IOpyoTtBZ06JCSd';
+    $bd = 'if0_41953172_tienda_padel';
 }
 
+$conexion = mysqli_connect($host, $usuario, $password, $bd);
+
+if (!$conexion) {
+    die("Error de conexión: " . mysqli_connect_error());
+}
 ?>
